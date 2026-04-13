@@ -56,7 +56,7 @@ const Navbar = () => {
       <nav className="bg-white fixed top-0 left-0 right-0 dark:bg-gray-900 dark:text-white shadow-md">
         <div className="flex items-center justify-between px-6 py-4">
           {/* Logo */}
-          <img src={Logo} alt="logo" />
+          <img className="w-[150px] md:w-[250px]" src={Logo} alt="logo" />
           {/* Desktop Menu */}
           <ul className="hidden md:flex gap-6 font-medium items-center">
             <Link to="/features">
@@ -82,7 +82,7 @@ const Navbar = () => {
           </ul>
 
           {/* Right Controls */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             {/* Search */}
             <button
               onClick={() => setSearchOpen(true)}
@@ -100,7 +100,7 @@ const Navbar = () => {
             <div ref={dropdownRef} className="relative">
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="text-xl text-white bg-[#635bff] pt-1 px-5 rounded-lg text-center pb-2"
+                className="md:text-xl text-white bg-[#635bff] pt-1 px-2 md:px-5 rounded-lg text-center pb-2"
               >
                 Account
               </button>
@@ -133,9 +133,15 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden px-6 pb-4 space-y-3 bg-white dark:bg-gray-900">
-            <p>Features</p>
-            <p>Pricing</p>
-            <p>Blog</p>
+            <Link to="/features">
+              <p>Features</p>
+            </Link>
+            <Link to="/pricing">
+              <p>Pricing</p>
+            </Link>
+            <Link to="blogs">
+              <p>Blogs</p>
+            </Link>
             <p>Pages</p>
             <p className="bg-blue-500 text-white px-3 py-2 rounded w-fit">
               Buy Now

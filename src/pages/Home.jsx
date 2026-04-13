@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("magic");
@@ -99,7 +100,7 @@ const Home = () => {
 
         <div className="flex gap-3">
           <button className="w-1/2 bg-[#635bff] text-white py-2 rounded-lg hover:bg-purple-600">
-            User
+            <Link to="/user">User</Link>
           </button>
 
           <button className="w-1/2 bg-[#1c274c] text-white py-2 rounded-lg hover:bg-indigo-800">

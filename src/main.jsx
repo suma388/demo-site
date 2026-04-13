@@ -11,6 +11,7 @@ import MainLayOut from "./layouts/MainLayOut.jsx";
 import Blogs from "./pages/Blogs.jsx";
 import Users from "./pages/Users.jsx";
 import Home from "./pages/Home.jsx";
+import UserLayOut from "./layouts/UserLayOut.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       },
     ],
     errorElement: Error,
+  },
+  {
+    path: "/user",
+    Component: UserLayOut,
   },
 ]);
 
