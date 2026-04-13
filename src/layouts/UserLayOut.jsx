@@ -1,35 +1,49 @@
 import React from "react";
-import { Outlet } from "react-router";
 import Logo from "../assets/logo.svg";
 import { IoSettings } from "react-icons/io5";
 import { FaDonate, FaFileInvoice } from "react-icons/fa";
 import { AiFillApi } from "react-icons/ai";
 import Header from "../component/Header";
+import { NavLink, Outlet } from "react-router";
 
 const UserLayOut = () => {
   return (
-    <div className="grid grid-cols-5">
-      <div className="col-span-1 p-6">
+    <div className="h-screen bg-gray-100">
+      {/*Sidebar*/}
+      <div className="fixed left-0 top-0 w-64 h-full bg-white p-6 shadow-md">
         <img className="mt-3 mb-6" src={Logo} alt="" />
+
         <h2 className="text-[#b0adb3] text-lg mb-3">Main Menu</h2>
+
         <ul className="grid gap-1">
-          <li className="text-xl hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-1 flex gap-2 items-center">
-            <IoSettings /> Account Settings
+          <NavLink to="/user/accountSettings">
+            <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
+              <IoSettings /> Account Settings
+            </li>
+          </NavLink>
+
+          <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
+            <FaDonate /> Billing
           </li>
-          <li className="text-xl hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-1 flex gap-2 items-center">
-            <FaDonate /> Biling
-          </li>
-          <li className="text-xl hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-1 flex gap-2 items-center">
+
+          <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
             <FaFileInvoice /> Invoice
           </li>
-          <li className="text-xl hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-1 flex gap-2 items-center">
+
+          <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
             <AiFillApi /> API
           </li>
         </ul>
       </div>
-      <div className="col-span-4 border">
-        <Header></Header>
-        <Outlet></Outlet>
+
+      {/* Main Content Area */}
+      <div className="ml-64">
+        <div className="fixed top-0 left-58 right-0 h-16 bg-white shadow z-10 flex items-center px-6">
+          <Header />
+        </div>
+        <div className="pt-16 p-6 h-screen overflow-y-auto">
+          <Outlet></Outlet>
+        </div>
       </div>
     </div>
   );

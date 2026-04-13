@@ -12,6 +12,7 @@ import Blogs from "./pages/Blogs.jsx";
 import Users from "./pages/Users.jsx";
 import Home from "./pages/Home.jsx";
 import UserLayOut from "./layouts/UserLayOut.jsx";
+import Notification from "./pages/Notification.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,12 @@ const router = createBrowserRouter([
   {
     path: "/user",
     Component: UserLayOut,
+    children: [
+      {
+        path: "notification",
+        Component: Notification,
+      },
+    ],
   },
 ]);
 
