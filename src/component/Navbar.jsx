@@ -98,12 +98,14 @@ const Navbar = () => {
 
             {/* Account */}
             <div ref={dropdownRef} className="relative">
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="md:text-xl text-white bg-[#635bff] pt-1 px-2 md:px-5 rounded-lg text-center pb-2"
-              >
-                Account
-              </button>
+              <Link to="/user">
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="md:text-xl hover:bg-[#463ed5] text-white bg-[#635bff] pt-1 px-2 md:px-5 rounded-lg text-center pb-2"
+                >
+                  Account
+                </button>
+              </Link>
 
               {dropdownOpen && (
                 <div className="absolute right-0 mt-3 w-40 bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
