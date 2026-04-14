@@ -13,6 +13,7 @@ import Users from "./pages/Users.jsx";
 import Home from "./pages/Home.jsx";
 import UserLayOut from "./layouts/UserLayOut.jsx";
 import Notification from "./pages/Notification.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "notification",
         Component: Notification,
+      },
+      {
+        path: "dashBoard",
+        Component: Dashboard,
       },
     ],
   },

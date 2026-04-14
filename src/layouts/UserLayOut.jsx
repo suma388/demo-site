@@ -16,14 +16,14 @@ const UserLayOut = () => {
         <h2 className="text-[#b0adb3] text-lg mb-3">Main Menu</h2>
 
         <ul className="grid gap-1">
-          <NavLink to="/user/accountSettings">
+          <NavLink to="/user/dashBoard">
             <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
-              <IoSettings /> Account Settings
+              <FaDonate /> DashBoard
             </li>
           </NavLink>
 
           <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
-            <FaDonate /> Billing
+            <IoSettings /> Account Settings
           </li>
 
           <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
