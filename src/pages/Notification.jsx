@@ -5,7 +5,7 @@ const Notification = () => {
     <div className="my-5 p-3">
       <h1 className="text-3xl font-bold">Notifications</h1>
       <div className="space-y-2 mt-5">
-        <div className="p-2 bg-gray-100 rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
+        <div className="p-3 bg-white rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
           <p className="text-xl font-bold text-gray-800 dark:text-white">
             💰 Payment received
           </p>
@@ -16,7 +16,7 @@ const Notification = () => {
           <span className="text-gray-500">2 min ago</span>
         </div>
 
-        <div className="p-2 bg-gray-100 rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
+        <div className="p-3 bg-white rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
           <p className="text-xl font-bold text-gray-800 dark:text-white">
             📩 New message from client
           </p>
@@ -26,7 +26,7 @@ const Notification = () => {
           </p>
           <span className=" text-gray-500">10 min ago</span>
         </div>
-        <div className="p-2 bg-gray-100 rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
+        <div className="p-3 bg-white rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
           <p className="text-xl font-bold text-gray-800 dark:text-white">
             🚀 New Update is here!
           </p>
