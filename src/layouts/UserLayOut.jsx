@@ -20,11 +20,6 @@ const navItems = [
     icon: <AiFillApi size={18} />,
     label: "Notifications",
   },
-  {
-    to: "/user/plans",
-    icon: <AiFillApi size={18} />,
-    label: "Plans",
-  },
 ];
 
 const UserLayOut = () => {

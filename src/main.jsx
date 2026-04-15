@@ -16,7 +16,6 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Profile from "./pages/Profile.jsx";
 import { Toaster } from "sonner";
 import Subscription from "./component/Subscription.jsx";
-import Plans from "./pages/Plans.jsx";
 
 const router = createBrowserRouter([
   {
@@ -61,11 +60,6 @@ const router = createBrowserRouter([
       {
         path: "subscription",
         Component: Subscription,
-      },
-
-      {
-        path: "plans",
-        Component: Plans,
       },
     ],
   },

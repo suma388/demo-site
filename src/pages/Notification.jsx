@@ -4,8 +4,8 @@ const Notification = () => {
   return (
     <div className="my-5 p-3">
       <h1 className="text-3xl font-bold">Notifications</h1>
-      <div className="space-y-2 mt-5">
-        <div className="p-3 bg-white rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
+      <div className="space-y-2 mt-5 border-t pt-9">
+        <div className="p-3 dark:bg-indigo-950 bg-white rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
           <p className="text-xl font-bold text-gray-800 dark:text-white">
             💰 Payment received
           </p>
@@ -16,7 +16,7 @@ const Notification = () => {
           <span className="text-gray-500">2 min ago</span>
         </div>
 
-        <div className="p-3 bg-white rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
+        <div className="p-3 dark:bg-indigo-950 bg-white rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
           <p className="text-xl font-bold text-gray-800 dark:text-white">
             📩 New message from client
           </p>
@@ -26,7 +26,7 @@ const Notification = () => {
           </p>
           <span className=" text-gray-500">10 min ago</span>
         </div>
-        <div className="p-3 bg-white rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
+        <div className="p-3 dark:bg-indigo-950 bg-white rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
           <p className="text-xl font-bold text-gray-800 dark:text-white">
             🚀 New Update is here!
           </p>
@@ -35,6 +35,16 @@ const Notification = () => {
             a new device. Password changed successfully.
           </p>
           <span className=" text-gray-500">1 hour ago</span>
+        </div>
+        <div className="p-3 dark:bg-indigo-950 bg-white rounded hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer">
+          <p className="text-xl font-bold text-gray-800 dark:text-white">
+            📩 Money received successfully
+          </p>
+          <p className="text-lg">
+            You have successfully received 12000 taka from sea food company. Bug
+            fixes and performance improvements released.
+          </p>
+          <span className=" text-gray-500">10 min ago</span>
         </div>
       </div>
     </div>

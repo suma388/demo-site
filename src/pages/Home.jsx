@@ -7,7 +7,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen mt-20 flex items-center justify-center  px-4">
-      <div className="w-full max-w-md bg-white p-6 rounded-xl">
+      <div className="w-full max-w-md dark:bg-indigo-950 bg-white p-6 rounded-xl">
         {/* Social Login */}
         <button className="w-full flex items-center justify-center gap-2 border border-[#e9e9e9] py-3 rounded-lg mb-3 hover:bg-gray-50">
           <FaGoogle /> Sign in with Google
@@ -28,7 +28,7 @@ const Home = () => {
         <div className="flex bg-gray-100 rounded-lg p-1 mb-4">
           <button
             onClick={() => setActiveTab("magic")}
-            className={`w-1/2 py-2 rounded-lg text-sm ${
+            className={`w-1/2 py-2 dark:bg-indigo-950 rounded-lg text-sm ${
               activeTab === "magic"
                 ? "bg-white shadow font-medium"
                 : "text-gray-500"
@@ -39,7 +39,7 @@ const Home = () => {
 
           <button
             onClick={() => setActiveTab("password")}
-            className={`w-1/2 py-2 rounded-lg text-sm ${
+            className={`w-1/2 py-2 dark:bg-indigo-800 rounded-lg text-sm ${
               activeTab === "password"
                 ? "bg-white shadow font-medium"
                 : "text-gray-500"
