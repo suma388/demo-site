@@ -6,7 +6,6 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import Features from "./pages/Features.jsx";
 import Pricing from "./pages/Pricing.jsx";
-import Error from "./pages/Error.jsx";
 import MainLayOut from "./layouts/MainLayOut.jsx";
 import Blogs from "./pages/Blogs.jsx";
 import Users from "./pages/Users.jsx";
@@ -16,6 +15,8 @@ import Notification from "./pages/Notification.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Profile from "./pages/Profile.jsx";
 import { Toaster } from "sonner";
+import Subscription from "./pages/Subscription.jsx";
+import ErorrPage from "./pages/ErorrPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,8 +40,12 @@ const router = createBrowserRouter([
         path: "users",
         Component: Users,
       },
+      {
+        path: "subscription",
+        Component: Subscription,
+      },
     ],
-    errorElement: Error,
+    errorElement: ErorrPage,
   },
   {
     path: "/user",
