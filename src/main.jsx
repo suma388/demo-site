@@ -15,8 +15,8 @@ import Notification from "./pages/Notification.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Profile from "./pages/Profile.jsx";
 import { Toaster } from "sonner";
-import Subscription from "./pages/Subscription.jsx";
-import ErorrPage from "./pages/ErorrPage.jsx";
+import Subscription from "./component/Subscription.jsx";
+import Plans from "./pages/Plans.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,12 +40,7 @@ const router = createBrowserRouter([
         path: "users",
         Component: Users,
       },
-      {
-        path: "subscription",
-        Component: Subscription,
-      },
     ],
-    errorElement: ErorrPage,
   },
   {
     path: "/user",
@@ -62,6 +57,15 @@ const router = createBrowserRouter([
       {
         path: "profile",
         Component: Profile,
+      },
+      {
+        path: "subscription",
+        Component: Subscription,
+      },
+
+      {
+        path: "plans",
+        Component: Plans,
       },
     ],
   },
