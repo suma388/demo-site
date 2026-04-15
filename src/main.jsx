@@ -14,6 +14,9 @@ import Home from "./pages/Home.jsx";
 import UserLayOut from "./layouts/UserLayOut.jsx";
 import Notification from "./pages/Notification.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import Profile from "./pages/Profile.jsx";
+import { Toaster } from "sonner";
+import Subscription from "./pages/Subscription.jsx";
 
 const router = createBrowserRouter([
   {
@@ -52,12 +55,21 @@ const router = createBrowserRouter([
         path: "dashBoard",
         Component: Dashboard,
       },
+      {
+        path: "profile",
+        Component: Profile,
+      },
+      {
+        path: "subscription",
+        Component: Subscription,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <Toaster position="top-center" richColors />
     <RouterProvider router={router} />
   </StrictMode>,
 );

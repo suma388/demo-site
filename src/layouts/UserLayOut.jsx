@@ -22,13 +22,17 @@ const UserLayOut = () => {
             </li>
           </NavLink>
 
-          <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
-            <IoSettings /> Account Settings
-          </li>
+          <NavLink to="/user/profile">
+            <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
+              <IoSettings /> Profile
+            </li>
+          </NavLink>
 
-          <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
-            <FaFileInvoice /> Invoice
-          </li>
+          <NavLink to="/user/subscription">
+            <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
+              <FaFileInvoice /> Subscription
+            </li>
+          </NavLink>
 
           <li className="text-lg hover:text-[#998bff] hover:bg-[#efeeff] rounded-lg py-2 px-2 flex gap-2 items-center cursor-pointer">
             <AiFillApi /> API
