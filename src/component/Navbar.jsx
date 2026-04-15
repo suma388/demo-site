@@ -152,7 +152,7 @@ const Navbar = () => {
         )}
       </nav>
 
-      {/* 🔍 SEARCH MODAL */}
+      {/* SEARCH MODAL */}
       {searchOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-start justify-center pt-32 z-50">
           <div

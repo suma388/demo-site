@@ -16,7 +16,6 @@ import Notification from "./pages/Notification.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Profile from "./pages/Profile.jsx";
 import { Toaster } from "sonner";
-import Subscription from "./pages/Subscription.jsx";
 
 const router = createBrowserRouter([
   {
@@ -48,20 +47,16 @@ const router = createBrowserRouter([
     Component: UserLayOut,
     children: [
       {
+        index: true,
+        Component: Dashboard,
+      },
+      {
         path: "notification",
         Component: Notification,
       },
       {
-        path: "dashBoard",
-        Component: Dashboard,
-      },
-      {
         path: "profile",
         Component: Profile,
-      },
-      {
-        path: "subscription",
-        Component: Subscription,
       },
     ],
   },
