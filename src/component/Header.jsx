@@ -1,16 +1,14 @@
 import { useState, useEffect, useRef } from "react";
-import { FaBell, FaSun, FaMoon, FaChevronDown } from "react-icons/fa";
+import { FaBell, FaSun, FaMoon, FaChevronDown, FaTimes } from "react-icons/fa"; // FaTimes যোগ করা হয়েছে
 import { Link } from "react-router";
 import { toast } from "sonner";
 
 export default function Header() {
-  // localStorage থেকে আগের theme নিয়ে আসে — page refresh করলেও মনে থাকবে
   const [dark, setDark] = useState(() => {
     return localStorage.getItem("theme") === "dark";
   });
-  const [showNotif, setShowNotif] = useState(false);
+  const [showNotif, setShowNotif] = useState(false); // এটি এখন ড্রয়ার কন্ট্রোল করবে
   const [showMenu, setShowMenu] = useState(false);
-  const notifRef = useRef(null);
   const menuRef = useRef(null);
 
   useEffect(() => {
@@ -30,11 +28,9 @@ export default function Header() {
     });
   };
 
-  // বাইরে click করলে dropdown বন্ধ হবে
+  // বাইরে click করলে প্রোফাইল মেনু বন্ধ হবে
   useEffect(() => {
     const handler = (e) => {
-      if (notifRef.current && !notifRef.current.contains(e.target))
-        setShowNotif(false);
       if (menuRef.current && !menuRef.current.contains(e.target))
         setShowMenu(false);
     };
@@ -42,8 +38,17 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  // ড্রয়ার ওপেন থাকলে বডি স্ক্রল বন্ধ রাখা
+  useEffect(() => {
+    if (showNotif) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showNotif]);
+
   return (
-    <div className="w-full flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-white dark:bg-gray-800">
+    <div className="w-full flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
       {/* Left */}
       <h1 className="text-base sm:text-xl font-semibold text-gray-800 dark:text-white truncate">
         Welcome Dear! 👋
@@ -60,59 +65,17 @@ export default function Header() {
           {dark ? <FaSun size={15} /> : <FaMoon size={15} />}
         </button>
 
-        {/* Notification */}
-        <div className="relative" ref={notifRef}>
-          <button
-            onClick={() => {
-              setShowNotif(!showNotif);
-              setShowMenu(false);
-            }}
-            className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors relative"
-          >
-            <FaBell size={15} />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-gray-700"></span>
-          </button>
-
-          {showNotif && (
-            <div className="absolute right-0 mt-2 w-72 sm:w-80 bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-3 z-50 border border-gray-100 dark:border-gray-700">
-              <h3 className="text-base font-semibold mb-3 text-gray-800 dark:text-white px-1">
-                Notifications
-              </h3>
-              <div className="space-y-1">
-                {[
-                  { icon: "💰", title: "Payment received", time: "2 min ago" },
-                  {
-                    icon: "📩",
-                    title: "New message from client",
-                    time: "10 min ago",
-                  },
-                  {
-                    icon: "🚀",
-                    title: "New Update is here!",
-                    time: "1 hour ago",
-                  },
-                ].map((n, i) => (
-                  <div
-                    key={i}
-                    className="p-2.5 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors"
-                  >
-                    <p className="text-sm text-gray-800 dark:text-white">
-                      {n.icon} {n.title}
-                    </p>
-                    <span className="text-xs text-gray-400 mt-0.5 block">
-                      {n.time}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <Link to="/user/notification" onClick={() => setShowNotif(false)}>
-                <button className="w-full mt-2 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-700 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-white transition-colors">
-                  View All Notifications
-                </button>
-              </Link>
-            </div>
-          )}
-        </div>
+        {/* Notification Bell Icon */}
+        <button
+          onClick={() => {
+            setShowNotif(true); // ড্রয়ার ওপেন হবে
+            setShowMenu(false);
+          }}
+          className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors relative"
+        >
+          <FaBell size={15} />
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-gray-700"></span>
+        </button>
 
         {/* Profile dropdown */}
         <div className="relative" ref={menuRef}>
@@ -161,6 +124,107 @@ export default function Header() {
               </button>
             </div>
           )}
+        </div>
+      </div>
+
+      {/* ── Notification Sidebar Drawer ── */}
+      {/* Overlay (পেছনের কালো ঝাপসা অংশ) */}
+      <div
+        className={`fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] transition-opacity duration-300 ${
+          showNotif ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setShowNotif(false)}
+      />
+
+      {/* Drawer Body */}
+      <div
+        className={`fixed top-0 right-0 h-full w-full max-w-[350px] bg-white dark:bg-gray-800 z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out ${
+          showNotif ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Drawer Header */}
+          <div className="flex items-center justify-between p-5 border-b border-gray-100 dark:border-gray-700">
+            <h2 className="text-lg font-bold text-gray-800 dark:text-white flex items-center gap-2">
+              <FaBell className="text-violet-500" /> Notifications
+            </h2>
+            <button
+              onClick={() => setShowNotif(false)}
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 transition-colors"
+            >
+              <FaTimes size={18} />
+            </button>
+          </div>
+
+          {/* Notifications List */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-3">
+            {[
+              {
+                id: 1,
+                icon: "💰",
+                title: "Payment received",
+                desc: "You received $250.00 from client.",
+                time: "2 min ago",
+              },
+              {
+                id: 2,
+                icon: "📩",
+                title: "New message",
+                desc: "Jhon Doe sent you a new message.",
+                time: "10 min ago",
+              },
+              {
+                id: 3,
+                icon: "🚀",
+                title: "System Update",
+                desc: "Version 2.0 is now live with new features.",
+                time: "1 hour ago",
+              },
+              {
+                id: 4,
+                icon: "🛡️",
+                title: "Security Alert",
+                desc: "New login detected from Chrome on Mac.",
+                time: "5 hours ago",
+              },
+              {
+                id: 5,
+                icon: "🎁",
+                title: "Reward Earned",
+                desc: "You've earned a loyalty badge!",
+                time: "Yesterday",
+              },
+            ].map((n) => (
+              <div
+                key={n.id}
+                className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors cursor-pointer group"
+              >
+                <div className="flex gap-3">
+                  <span className="text-2xl">{n.icon}</span>
+                  <div className="flex-1">
+                    <h4 className="text-sm font-bold text-gray-800 dark:text-white group-hover:text-violet-500 transition-colors">
+                      {n.title}
+                    </h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">
+                      {n.desc}
+                    </p>
+                    <span className="text-[10px] font-medium text-gray-400 mt-2 block uppercase tracking-wider">
+                      {n.time}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Drawer Footer */}
+          <div className="p-4 border-t border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
+            <Link to="/user/notification" onClick={() => setShowNotif(false)}>
+              <button className="w-full py-3 text-sm font-bold bg-violet-600 hover:bg-violet-700 text-white rounded-xl shadow-lg shadow-violet-200 dark:shadow-none transition-all active:scale-95">
+                View All Notifications
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
