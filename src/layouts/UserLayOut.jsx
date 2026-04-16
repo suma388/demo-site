@@ -6,19 +6,21 @@ import { AiFillApi } from "react-icons/ai";
 import { FiMenu, FiX } from "react-icons/fi";
 import Header from "../component/Header";
 import { NavLink, Outlet } from "react-router";
+import { TbTransactionRupee } from "react-icons/tb";
 
 const navItems = [
   { to: "/user", icon: <FaDonate size={18} />, label: "DashBoard" },
   { to: "/user/profile", icon: <IoSettings size={18} />, label: "Profile" },
+  { to: "/user/user", icon: <FaFileInvoice size={18} />, label: "Users" },
   {
     to: "/user/subscription",
-    icon: <FaFileInvoice size={18} />,
+    icon: <AiFillApi size={18} />,
     label: "Subscription",
   },
   {
-    to: "/user/notification",
-    icon: <AiFillApi size={18} />,
-    label: "Notifications",
+    to: "/user/transaction",
+    icon: <TbTransactionRupee size={18} />,
+    label: "Transactions",
   },
 ];
 
