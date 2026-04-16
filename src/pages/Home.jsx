@@ -100,7 +100,7 @@ const Home = () => {
 
         <div className="flex gap-3">
           <button className="w-1/2 bg-[#635bff] text-white py-2 rounded-lg hover:bg-purple-600">
-            <Link to="/user">User</Link>
+            <Link to="/user/user">User</Link>
           </button>
 
           <button className="w-1/2 bg-[#1c274c] text-white py-2 rounded-lg hover:bg-indigo-800">
